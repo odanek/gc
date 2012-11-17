@@ -1,0 +1,483 @@
+2011-11-15 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/Neighbourhood.h: Added 98-neighbourhood to the Common() method. Exception
+        is thrown when unexpected neighbourhood size is supplied.
+
+2011-11-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Many files: Some doxygen/documentation related improvements.
+
+2011-10-17 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Collection/Tuple.h: Minor improvements.
+    * Gc/Flow/Grid/ZengDanek.cpp: Minor improvements.
+    * Gc/Algo/Segmentation/RousonDeriche.cpp: Fixed bug in masked segmentation.
+    * some other files: Fixed GCC warnings and errors.
+
+2011-10-12 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Algo/Function.h, Predicate.h, Range.h: Basic iterator based algorithms added. 
+        Several classes and methods modified to use the iterators instead of indexes.
+    * Gc/Flow/Grid/ZengDanek.*: Fixed border nodes handling also in the 3D case. It is assumed
+        that the image is surrounded by an infinite background component.
+
+2011-09-29 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/ZengDanek.cpp: Border nodes are treated correctly in IsSimple method. Currently
+        only the 2D case is fixed.
+
+2011-05-03 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Examples/Matlab: Code reorganization. Mumford-Shah and Rousson-Deriche segmentation
+        examples added.
+
+2011-04-29 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/Clustering/KMeans/GibouFedkiw.*: Method replaced by a general KMeans
+        clustering using Lloyd's algorithm in Gc/Algo/Clustering/KMeans.*. For 2
+        means the new algorithm gives exactly the same results. However, it is 
+        approximately 80% slower.
+    * Gc/Algo/Segmentation/MumfordShah.*: Piecewise constant Mumford-Shah segmentation
+        for arbitrary number of labels added.
+
+2011-04-28 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/DanekLabels.cpp, Gc/Algo/Geometry/DistanceTransform.cpp: Explicit
+        instantiations for Uint16 label type added.
+    
+2011-04-23 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/Segmentation/RoussonDeriche.*: Documentation added.
+
+2011-04-22 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/Segmentation/RoussonDeriche.*: New segmentation method based
+        on the probabilistice Rousson-Deriche model added.
+    * Gc/Algo/Segmentation/ChanVese.*, Tools.*, Mask.h: Code reorganization
+        and minor improvements. NormalizeImage and CreateBandMask functions 
+        moved to Tools:: namespace. ComputeAuto and ComputeTwoStageAuto
+        functions removed.
+    * Gc/Algo/Clustering/KMeans/GibouFedkiw.cpp: Minor code cleanup and
+        improvements.
+
+2011-04-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/ZengDanek.*: Bug fixed, performance improved.
+    * Gc/Flow/Grid/DanekLabels.*: Bugs fixed, minor improvements.
+    * Gc/Algo/Geometry/DistanceTransform.*: Local distance transform function 
+        added.
+    * Gc/Flow/Grid/CommonBase.*: Grid dimensions are now remembered so that
+        parameter check can be done later in derived classes.
+
+2011-03-10 Ondrej Danek <ondrej.danek@gmail.com>
+    * Many files: Documentation updated.
+
+2011-03-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Examples/Matlab/ChanVese/*: Matlab interface updated. Labeling Chan-Vese
+        segmentation added.    
+     
+2011-03-07 Ondrej Danek <ondrej.danek@gmail.com>
+    * Examples/Matlab/ChanVese/GcChanVese.cpp: Fixed memory leaks.
+    * Examples/Matlab/ChanVese/GcChanVeseTp.cpp: Minor documentation fix.
+    * Gc/Algo/Segmentation/ChanVese.*: Compute() and ComputeMasked() no longer
+        automaticaly dispose maximum flow algo memory. This has to be done by 
+        the user if required.
+    * Gc/Energy/Min/Grid/AlphaExpansion.cpp: Explicit instantiations added.            
+    * Gc/Energy/Min/Grid/AlphaBetaSwap.cpp: Explicit instantiations added.
+    * Gc/Flow/Grid/DanekLabels.*: New "weak-topology" preserving maximum flow
+        algorithm.            
+
+2011-02-21 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/Min/Grid/AlphaBetaSwap.*: Bugs fixed.         
+    * Gc/Energy/Min/Grid/AlphaExpansion.*: Bugs fixed.
+
+2011-02-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/IGridEnergy.h: Another small modification to the interface.
+    * Gc/System/Collection/Array.h: Static method IsNeighbourInside() fixed.
+    * Gc/Energy/Min/Grid/AlphaBetaSwap.*: Method improved.         
+    * Gc/Energy/Min/Grid/AlphaExpansion.*: Method implemented.
+    * Gc/Energy/Min/Grid/LabelingEnergy.*: Auxiliary method for computation
+        of energy of a given labeling added.              
+
+2011-02-08 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/IGridEnergy.h: Small modifications to the interface.
+    * Gc/Energy/Min/Grid/AlphaBetaSwap.*: Algorithm implemented. File
+        renamed.
+    * Gc/System/Collection/BoolArrayMask.h: Fixed errors.
+    * Most of the maximum flow algorithms: Dropped requirement for 
+        positive terminal arc capacities.        
+
+2011-02-01 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/IEnergy.h, IGridEnergy.h: MRF energy specification
+        interface added.
+    * Gc/Energy/Min/Grid/AlfaBetaSwap.*, AlfaExpansion.*: These files
+        will contain algorithm for minimization of the grid labeling
+        problems.
+
+2011-01-05 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/Potential/Metric/RiemannianBoykov.cpp: Bug fixed.
+
+2010-11-29 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/ZengDanek.cpp: Bug fixed.
+
+2010-11-26 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/ZengDanek.*: Voxel mask specification now possible.
+        Makes the method compatible with two-stage algorithm.
+    * Matlab interface for Chan-Vese segmentation updated and simplified.     
+
+2010-11-24 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/KohliMask.*: Class merged with Gc::Flow::Grid::Kohli.
+    * Gc/Flow/Grid/PushRelabel/FifoMask.*: Class merged with 
+        Gc::Flow::Grid::PushRelabel::Fifo.    
+    * Gc/Flow/Grid/PushRelabel/HighestLevelMask.*: Class merged with 
+        Gc::Flow::Grid::PushRelabel::HighestLevel.    
+    * Gc/Flow/Grid/ZengDanek.*: Documentation improved. Preparations for
+        mask specification.     
+     
+2010-11-23 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/ZengDanek.*: Different data structure is used to store the
+        list of active nodes and to retrieve the nodes closest to the boundary.
+        The original approach with bucket priority queue was flawed and was
+        causing crashes when the distance from the boundary underflew the
+        lower bound (even though the paper states that this cannot happen).
+
+2010-10-04 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/Geometry/SimplePoint.*: Simple point inspection routines from
+        digital topology added for 2D and 3D.    
+    * Gc/Flow/General/ZengDanek.cpp: Extension to 3D implemented. 
+
+2010-09-20 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/General/Zeng.*: Renamed to ZengDanek.*.
+     
+2010-09-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/General/Zeng.*: Fixed possible bug. New handling of distance of
+        recruited free nodes.    
+
+2010-08-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/General/Zeng.*: Fixed possible bug. New handling of distance of
+        recruited free nodes.    
+
+2010-08-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Collection/Array.h: ZeroMemory() method renamed to 
+        ZeroFillMemory due to conflicts with some system macro.
+
+2010-06-25 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/CommonBase.cpp: Bug fixed.
+
+2010-06-06 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/Clustering/KMeans/GibouFedkiw.*: Now returns the number of iterations
+        performed.
+    * Gc/Algo/Segmentation/ChanVese.*: Now returns the number of iterations performed.    
+
+2010-06-04 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Log.*: Dll export macro added.
+    * Gc/Data/BlockIterator.h: Renamed to BorderIterator. Minor improvements implemented.
+    * Gc/Data/ElementIterator.h: Class removed.    
+
+2010-06-03 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Log.*: New logging class added with ability to redirect the log output
+        of the library.
+    * Documentation improvements.    
+    
+2010-06-02 Ondrej Danek <ondrej.danek@gmail.com>
+    * Documentation improved.
+
+2010-06-01 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Energy/Potential/Metric/RiemannianSlow.*: Renamed to RiemannianDanek.
+    * Gc/Energy/Potential/Metric/RiemannianFast.*: Renamed to RiemannianBoykov.
+    * Gc/Flow/General/Zeng.*: Moved to Gc/Flow/Grid and rewritten.
+    * Gc/Flow/Grid/*: Small bug fixed in all grid max-flow algorithms.            
+
+2010-05-31 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/*: Maximum flow algorithms now use System::Collection::Array for data storage.
+    * some other files: Explicit modifier added to potentially dangerous constructors.    
+
+2010-05-28 Ondrej Danek <ondrej.danek@gmail.com>
+    * GCC bugs fixed
+    * Documentation added in many files.    
+    * Gc/Flow/Grid/CommonBase.*: Common base of grid max-flow algorithms. Performs some parameter
+        checking and initialization.
+    * Gc/Algo/Segmentation/ChanVese.*: Compute, ComputeMasked and ComputeTwoStage now accept grid
+        max-flow algorithms. ComputeAuto and ComputeTwoStage auto use grid variants insted of
+        general max-flows. ComputeTwoStageMasked routine added.
+    * Gc/Flow/Directed/Zeng.*: Implementation simplified. 
+    * Gc/System/Collection/Array.*, ArrayBuilder.*: Minor corrections.
+    * Gc/Algo/Geometry/DistanceTransform.cpp: Explicit instantiations added.
+    * Gc/Algo/Clustering/KMeans/GibouFedkiw.*: KMeans clustering by Gibou and Fedkiw moved to
+        a separate file.
+    * Gc/System/Collection/IArrayMask.h: Generic array mask class interface.
+    * Gc/Flow/Grid/KohliMask.*, PushRelabel/FifoMask.*, PushRelabel/HighestLevelMask.*: Mask variants
+        of the grid max-flow algorithms implemented.                               
+
+2010-05-27 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/Kohli.*: Minor improvements. Memory consumption is now even smaller.
+    * Gc/Flow/Grid/PushRelabel/*: PushRelabel::HighestLevel and PushRelabel::Fifo grid variant
+        implementation added.    
+    * Gc/Flow/Directed: Renamed to Gc/Flow/General
+
+2010-05-26 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Algo/segmentation/ChanVese.h: Grid variant added.
+    * Gc/Flow/Grid/Kohli.*: More memory consumption improvements.    
+
+2010-05-25 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Type.h + many files: Single and Double types renamed to Float32 and Float64.
+    * Gc/Data/Image.h: Bug fixed.
+    * Gc/System/Collection/ArrayBuilder.h: Default constructor added. Bug fixed.
+    * Gc/Flow/Directed/Zeng.*: Topology preserving max-flow implementation added. Not yet fully working.
+    * Gc/Flow/IGridMaxFlow.h: Max-flow algorithms for grid graphs abstract class.
+    * Gc/Flow/Grid/Kohli.*: Kohli max-flow for grid graphs. Much much smaller (2x - 8x) memory consumption (especially
+        in x64 and for large neighbourhoods) than the general algorithm.
+
+2010-05-13 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Collection/Array.h, ArrayBuilder.h: Code fixed, some documentation added.
+    * Gc/Energy/Neighbourhood.h: Bugs fixed.
+    * Gc/Math/Algebra/Eigenvectors.*: Code for computation of eigenvectors and eigenvalues added.     
+
+2010-05-12 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Data/ValArray.h, Gc/Data/ValBlock.h: Merged into one class Gc/System/Collection/Array.h.
+    * Gc/Data/Tuple.h: Moved to Gc/System/Collection/Tuple.h.
+    * Gc/Energy/Neighbourhood.h: Class is now derived from Array class. New method Elementary().        
+
+2010-03-26 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Data/ValArray.h: Replacement class for std::vector and std::valarray.     
+    * Gc/Data/Tuple.h: Assignment operator optimized for 2-, 3- and 4-tuples.        
+
+2010-03-25 Ondrej Danek <ondrej.danek@gmail.com>
+    * Most of the files: Improvements in the code structure and class hierarchy.
+
+2010-03-05 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Matrix.h: Multilplication and divison operators added.
+    * MaxFlow namespace renamed to Flow.
+    * MinCut namespace renamed to Cut.        
+    * Energy/Potential/EuclideanMetric.*, RiemannianMetric.*: Moved to namespace Metric.
+    Approximation of general Riemannian metric using our approach added.
+
+2010-02-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Segmentation/ChanVese.cpp: Documentation added.
+    * Some other files: Excluded explicit instantiations from the output of doxygen.
+     
+2010-02-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * Many files: Documentation improved.
+    * Math/Algebra/SquareMatrix.*: Code fixes.     
+
+2010-02-15 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/Directed/Kohli.*: Bug fixed.
+
+2010-02-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Segmentation/ChanVese.*: All methods now return the value of the final energy.
+    * Type.h: Proper definition of types.
+    * Math/Algebra/Matrix.*, SquareMatrix.*: New class for square matrices. Determinant
+    computation and some other methods moved into this class.    
+    * Energy/RiemannianMetric.*: The tensor is now a square matrix.
+    * old: Old code removed.        
+
+2010-02-08 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Geometry/DistanceTransform.cpp: More speed improvements.
+    * Algo/Segmentation/ChanVese.*: Chan-Vese with mask and two-phase Chan-Vese
+    implementations improved. Some other minor speed improvements.        
+    * Data/BlockIterator.h, Data/ElementIterator.h: Minor improvements.
+    * Data/Image.cpp: Some explicit instantiations added.     
+          
+2010-02-08 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Geometry/DistanceTransform.cpp: Speed improvements.
+    * Data/BlockIterator.h, Data/ElementIterator.h: Old DataIterator improved and split
+    into two classes.
+    * Data/*: Minor fixes.        
+    * Algo/Segmentation/ChanVese.*: Chan-Vese with mask and two-phase Chan-Vese
+    implementations added.        
+
+2010-02-05 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Geometry/DistanceTransform.*: CityBlock and ChessBoard metric distance 
+    transform algorithms added.
+    * Energy/Neighbourhood.h: Unary minus operator added.
+    * Data/Image.h: Number of elements is precomputed. So calls tu Elements() are fast.
+    Element access operator [] added.
+    * Algo/Segmentation/ChanVese.*: Methods renamed.        
+
+2010-02-01 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Vector.h: Lexicographical sorting and Sgn method now take the
+    last element as tho most significant value.
+    * Energy/Neighbourhood.h: Minor improvements.
+    * Algo/Segmentation/ChanVese.cpp: Fixed GCC error.
+    * Auxiliary namespace renamed to Data.             
+
+2010-01-28 Ondrej Danek <ondrej.danek@gmail.com>
+    * Algo/Segmentation/ChanVese.*: Implementation of Chan-Vese segmentation added.
+    * Aux/DataIterator.*: Class for walk through N-dimensional data sets.    
+    * Aux/Image.*: Pad method implemented using DataIterator. IsNeighbourInImage
+    method added.
+    * Energy/Potential/EuclideanMetric.*: Bug fixed.
+    * Math/ConvergenceException.h: New exception added.    
+    * Minor bug fixes.    
+
+2010-01-20 Ondrej Danek <ondrej.danek@gmail.com>
+    * Aux/IImage.h: Changed order of template arguments.
+    * Aux/Image.*: Pad and IsEmpty methods added. Minor improvements.
+    * Energy/Potential/EuclideanMetric.*: Euclidean metric approximation implemented.
+    * Energy/Potential/RiemannianMetric.*: Riemannian metric approximation implemented.
+    * Gc/Math/Algebra/Vector.*,Matrix.*: Minor bug fixes.        
+    * Documentation fixes.
+
+2010-01-15 Ondrej Danek <ondrej.danek@gmail.com>
+    * all files: Copyright year changed to 2010.
+    * Energy/Potential/EuclideanMetric.*: Euclidean metric approximation clique
+    potential class stub added.        
+    * Energy/Potential/RiemannianMetric.*: Riemannian metric approximation clique
+    potential class stub added.        
+
+2010-01-14 Ondrej Danek <ondrej.danek@gmail.com>
+    * Doxyfile: Static and local functions and classes are not included in
+    the documentation.
+    * Energy/Neighbourhood.h: Many improvements. Remove, Union, Exclude
+    Negative, Positive, Split, GetExtent methods added. GeneretaBox generalized to
+    arbitrary number of dimensions and more.
+    * Math/Algebra/Number.h: Const modifiers added.
+    * Math/Algebra/Vector.h: Sorting operators fixed. Set method for 4D vectors fixed.
+    Sgn and Convert methods improved. Function for computing clockwise angle
+    between two 2D vectors added.
+    * Math/Common.h: Improvements in type-safety.
+    * System/Format.cpp: InsertString method implemented properly.
+    * System/Exception.*, Exceptions: All exceptions now save the name of the function
+    in which they were raised rather than a filename.                          
+    * Documentation improvements.    
+
+2009-12-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Voronoi.*: Method for computation of circular Voronoi
+    diagram added.    
+    * Math/Algebra/Vector.h: Sgn method added.
+    * Math/Algebra/Neighbourhood.h: Minor improvements.
+
+2009-12-10 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Hyperplane.h: General hyperplane class implementation.
+    * Math/Algebra/ConvexHull.*: Convex hull computation of points 
+    in 2D and 3D added.
+    * Math/Algebra/Voronoi.*: Spherical Voronoi diagram computation added.
+
+2009-11-24 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Matrix.h: Matrix class implementation added.
+    * Math/Algebra/Vector.h: Several improvements.
+
+2009-11-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Vector.h: Sum and Product methods added.
+    * Math/Common.h: Pow function added.
+
+2009-10-22 Ondrej Danek <ondrej.danek@gmail.com>
+    * Energy/Neighbourhood.h: Neighbourhood class added.
+    * Math/Algebra/Vector.h: Added lexicographical sorting, angle computation
+    and type conversion method.
+    * Math/Constant/Constant.h: Moved to Math/Constant.h
+    * Math/Math.h: Renamed to Math/Common.h, Round function added.
+    * Math/Algebra/Number.h: Greatest common divisor and least common multiple
+    functions implemented.                     
+
+2009-10-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Algebra/Linear: Math part of the library extended. Vector and plane
+    classes implemented.    
+
+2009-10-12 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/Directed/BoykovKolmogorov.h: Small documentation improvements.
+    * MaxFlow/Directed/Kohli.h: Implementation added.
+    * MaxFlow/Directed/FordFulkerson.*, EdmondsKarp.*: Simple capacity scaling added.    
+
+2009-09-22 Ondrej Danek <ondrej.danek@gmail.com>
+    * Another change of MaxFlow algorithm interfaces.
+    * MaxFlow/Directed/Kohli.*: Working perfectly now. However regular arc capacity
+    update support is not yet implemented.
+    * System/NotImplementedException.h: New exception.    
+
+2009-09-18 Ondrej Danek <ondrej.danek@gmail.com>
+    * Interfaces renamed.
+    * MaxFlow/Directed/Kohli.*: Dynamic algorithm by Kohli added. Not working yet.    
+
+2009-09-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * Changes in library structure
+    * Handling of error arguments and states (exceptions are thrown)
+    * Code license specified
+    * Fixed FifoGap code (3x faster now)
+    * Small improvements in PushRelabelFifo and PushRelabelHighestLevel             
+
+2009-06-30 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/PushRelabel*: Push-Relabel algorithms moved to a separate namespace.
+    * MaxFlow/PushRelabel/HighestLevel.cpp: Slightly different gap relabeling check.
+    * MaxFlow/PushRelabel/FifoGap.*: Push-Relabel with FIFO selection rule and
+    gap relabeling implementation added.
+    * CMakeLists.txt: Installation rule improvements.            
+
+2009-04-25 Ondrej Danek <ondrej.danek@gmail.com>
+    * Math/Math.h: Constant namespace with Pi and Euler number added.
+    
+2009-04-25 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/BoykovKolmogorov.*: Fixed, works finally and is faster than the
+    original implementation by the authors.    
+    * MaxFlow/Interface.h: Minor change.     
+    
+2009-04-24 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/BoykovKolmogorov.*: Bug fixes. However, still doesn't work.
+
+2009-04-23 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/BoykovKolmogorov.*: Maximum flow algorithm by Boykov and Kolmogorov
+    almost finished.
+    * MaxFlow/*: Fixed some problems with flow cancellation on terminal arcs
+    (the canceled flow is now added to the total flow).        
+
+2009-04-22 Ondrej Danek <ondrej.danek@gmail.com>
+    * Many files: Documentation update finished.
+
+2009-04-21 Ondrej Danek <ondrej.danek@gmail.com>
+    * Many files: Lots of documentation updates. Paper references added,
+    algorithm complexity specified.
+    * Some methods and strctures renamed. Code polished a little bit.    
+
+2009-04-20 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/PushRelabelFifo.*, MaxFlow/PushRelabelHighestLevel.*: 
+    Huge memory consumption improvement. T-links are no longer are no longer 
+    stored in the memory and are used only to initialize flow excess. 
+    The code should be also probably faster on larger graphs. 
+    * MaxFlow/PushRelabelFifo.*: Fixed problem with frequency of global
+    update on large graphs. Code structure improvements.
+    * Documentation update started.       
+     
+2009-04-16 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/PushRelabelFifo.*: Small performance and code improvements.
+    * MaxFlow/PushRelabelHighestLevel.*: Implementation of push-relabel algorithm
+    with highest level selection rule.
+    * Mat/Math.h: Sqrt function added.
+    * Fixed GCC warnings             
+
+2009-04-13 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/PushRelabelFifo.*: Faster initialization. Smaller memory consumption.
+    * MaxFlow/BoukovKolmogorovOrig.*: Bug fixed, memory consumption lowered.
+    * MaxFlow/EdmondsKarp.cpp: Bug fixed in breadth first search.
+    * MaxFlow/FordFulkerson.cpp: Bug fixed in depth first search.    
+
+2009-04-08 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/PushRelabelFifo.*: Push relabel with FIFO node
+    selection strategy implemented.
+    
+2009-04-07 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/Dinitz.*: Dinitz algorithm implemented.
+    * MaxFlow/Karzanov.*, MaxFlow/Mpm.*: Karzanov and Mpm algorithm
+    stubs added.        
+
+2009-03-17 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/FordFulkerson.*: DepthFirstSearch implemented. Capacity
+    scaling parametr added. Not yet working.
+    * MaxFlow/EdmondsKarp.*: Capacity scaling parametr added to 
+    BreadthFirstSearch. FattestPathSearch implemented.
+    * Fixed some warnings.        
+
+2009-03-11 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/FordFulkerson.*: Method improved.
+    * MaxFlow/BoykovKolmogorovOrig.*: The original algorithm by Boykov
+    added.        
+
+2009-03-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/FordFulkerson.*: Ford-Fulkerson algorithm implemented.
+    * Exception/*: Exception stubs added.    
+
+2009-03-05 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/Interface.h: Interface specification draft.
+
+2009-01-15 Ondrej Danek <ondrej.danek@gmail.com>
+    * MaxFlow/*.*: Stubs for more max flow algorithms added.
+    * MaxFlow/BoykovOriginal.*: Renamed to BoykovKolmogorov.*    
+
+2009-01-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Auxiliary/BitField.h: BitField class added.
+    * Math/Math.h: Generic math functions added.
+    * MaxFlow/*.cpp, *.h: Added stubs for max flow algorithms.            
+     
+2009-01-09 Ondrej Danek <ondrej.danek@gmail.com>
+    * Library founded
+    * ChangeLog created
+    * CMakeLists.txt created        
+
