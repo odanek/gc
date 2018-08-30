@@ -37,8 +37,7 @@ static void Segment(const mxArray *mx_in, Gc::Size k, T lambda, T conv,
     img.SetSpacing(Gc::Math::Algebra::Vector<N,T>(1));
 
     // Create neighbourhood object
-    Gc::Energy::Neighbourhood<N,Gc::Int32> nb;
-    Gc::Examples::Matlab::CreateNeighbourhood(str_nb, nb);
+    Gc::Energy::Neighbourhood<N,Gc::Int32> nb((Gc::Size)atoi(str_nb + 1), false);
 
     // Weights - same weight lambda for all partitions
     Gc::System::Collection::Array<1,T> l(k, lambda);

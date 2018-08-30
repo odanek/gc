@@ -19,14 +19,15 @@
 
 /**
     @file
-    Label preserving maximum flow algorithm for directed grid graphs.
+    Maximum flow algorithm (for directed grid graphs) integrated with the object
+    indication function.
 
     @author Ondrej Danek <ondrej.danek@gmail.com>
     @date 2010
 */
 
-#ifndef GC_FLOW_GRID_ZENGDANEK_H
-#define GC_FLOW_GRID_ZENGDANEK_H
+#ifndef GC_FLOW_GRID_DANEKLABELS_H
+#define GC_FLOW_GRID_DANEKLABELS_H
 
 #include <map>
 #include "../../Core.h"
@@ -38,7 +39,8 @@ namespace Gc
 	{
         namespace Grid
         {
-            /** Label preserving maximum flow algorithm for directed grid graphs.
+            /** Maximum flow algorithm (for directed grid graphs) integrated with the object 
+                indication function.
             
                 @todo Documentation.
 
@@ -95,7 +97,7 @@ namespace Gc
                         - bit 3 - 0 = non-free node, 1 = free node
                     */
                     Uint8 m_tag;
-                    /** Current node label. */
+                    /** Current object indicator. */
                     LAB m_label;
                 };
 
@@ -263,7 +265,7 @@ namespace Gc
             private:
                 /** Node array. */
                 System::Collection::Array<1,Node> m_node_list;
-                /** Initial labelling. */
+                /** Initial object indicators. */
                 const System::Collection::Array<N,LAB> *m_ilab;
                 /** Initial distance map. */
                 System::Collection::Array<N,Uint32> m_dmap;
@@ -308,14 +310,14 @@ namespace Gc
 
 			    virtual void Dispose();
 
-                /** Set initial labelling. 
+                /** Set initial object indicators. 
                 
                     @warning Only pointer to the object is taken, so this object
                         should not be deleted before or during the computation!
                 */
                 void SetInitialLabelingRef(const System::Collection::Array<N,LAB> &ilab);
 
-                /** Get final node labels. */
+                /** Get the final object indicator for a given node. */
                 LAB NodeLabel(Size node) const;
 
             private:

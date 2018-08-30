@@ -32,6 +32,7 @@
 #include "../../../Core.h"
 #include "../../../Type.h"
 #include "../../../Math/Algebra/SquareMatrix.h"
+#include "../../../System/Collection/Pair.h"
 #include "../../Neighbourhood.h"
 
 namespace Gc
@@ -150,17 +151,59 @@ namespace Gc
                     RiemannianDanek<N,T>& SetTransformationMatrix
                         (const Math::Algebra::SquareMatrix<N,T> &mt);
 
-                    /** Get edge weights approximating the Euclidean metric. */
+                    /** Get edge weights approximating the Riemannian metric. */
                     const System::Collection::Array<1,T>& EdgeWeights() const
                     {
                         return m_rw;
                     }
 
-                    /** Get edge weight for i-th neighbour. */
+                    /** Get edge weight for i-th neighbourhood vector. */
                     T operator[] (Size i) const
                     {
                         return m_rw[i];
                     }
+                };
+
+                /** Faster specialization of RiemannianDanek for a 2D space. 
+                
+                    This class does the same as RiemannianDanek. It offers faster recomputation
+                    when the transformation matrix changes, but supports only 2D space and requires 
+                    slightly more memory.
+
+                    @see RiemannianDanek.
+
+                    @tparam T Precision.
+                */
+                template <class T>
+                class GC_DLL_EXPORT RiemannianDanek2D
+                {
+                protected:
+                    /** Neighbourhood sorted according to the angular orientation and cross indexes. */
+                    System::Collection::Array<1,System::Collection::Pair<Math::Algebra::Vector<2,T>,Uint8> > m_nb;
+                    /** Calculated edge weights. */
+                    System::Collection::Array<1,T> m_rw;
+
+                public:
+                    /** Constructor. */
+                    RiemannianDanek2D(const Neighbourhood<2,T> &n);
+
+                    /** Specify the transformation of the Riemannian space. */
+                    RiemannianDanek2D<T>& SetTransformationMatrix
+                        (const Math::Algebra::SquareMatrix<2,T> &mt);
+
+                    /** Get edge weights approximating the Riemannian metric. */
+                    const System::Collection::Array<1,T>& EdgeWeights() const
+                    {
+                        return m_rw;
+                    }
+
+                    /** Get edge weight for i-th neighbourhood vector. */
+                    T operator[](Size i) const
+                    {
+                        return m_rw[i];
+                    }
+
+                protected:
                 };
             }
         }

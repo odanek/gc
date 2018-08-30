@@ -35,8 +35,7 @@ static void Segment(const mxArray *mx_in, T lambda, T conv, Gc::Size max_iter,
     img.SetSpacing(Gc::Math::Algebra::Vector<N,T>(1));
 
     // Create neighbourhood object
-    Gc::Energy::Neighbourhood<N,Gc::Int32> nb;
-    Gc::Examples::Matlab::CreateNeighbourhood(str_nb, nb);
+    Gc::Energy::Neighbourhood<N,Gc::Int32> nb((Gc::Size)atoi(str_nb + 1), false);
 
     // Initialization
     Gc::Algo::Segmentation::RoussonDeriche::Params<T> rdpar;

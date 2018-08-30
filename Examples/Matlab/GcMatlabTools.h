@@ -21,43 +21,6 @@ namespace Gc
         {
             /*************************************************************************************/
 
-            // Create neighbourhood corresponding to a string identifier
-            // Supported neighbourhoods are: 
-            //  for 2D: N4, N8, N16, N32
-            //  for 3D: N6, N18, N26, N98
-            template <Gc::Size N>
-            void CreateNeighbourhood(const char *str_nb, Gc::Energy::Neighbourhood<N,Gc::Int32> &nb)
-            {
-                if (N == 2)
-                {
-                    if (!strcmp(str_nb, "N4") || !strcmp(str_nb, "N8") || 
-                        !strcmp(str_nb, "N16") || !strcmp(str_nb, "N32"))
-                    {
-                        nb.Common((Gc::Size)atoi(str_nb + 1), false);
-                        return;
-                    }
-                }
-
-                if (N == 3)
-                {
-                    if (!strcmp(str_nb, "N6") || !strcmp(str_nb, "N18") || 
-                        !strcmp(str_nb, "N26"))
-                    {
-                        nb.Common((Gc::Size)atoi(str_nb + 1), false);
-                        return;
-                    }
-                    if (!strcmp(str_nb, "N98"))
-                    {
-                        nb.Box(Gc::Math::Algebra::Vector<N,Gc::Size>(2), true, false);
-                        return;
-                    }
-                }
-
-                mexErrMsgTxt("Unsupported neighbourhood type for given image dimensionality.");
-            }
-
-            /*************************************************************************************/
-
             // Create general max-flow algorithm corresponging to given string identifier
             template <class T>
             static Gc::Flow::IMaxFlow<T,T,T> *CreateGeneralMaxFlow(const char *name)
