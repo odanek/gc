@@ -1,3 +1,19 @@
+2012-03-05 Ondrej Danek <ondrej.danek@gmail.com>
+    * Matlab examples: CreateNeighbourhood function removed as it is no longer necessary
+        when the Gc::Energy::Neighbourhood object supports also N98 neighbourhood in the
+        Common method.
+    * Gc/Flow/Grid/DanekLabels.h: Small documentation improvements.
+
+2012-03-03 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/System/Collection/Pair.h: Pair container added.
+    * Gc/System/Algo/Sort/Heap.h: Simultaneous sorting removed (now pairs of values
+        are sorted to achieve the same effect) and predicate option added.
+    * Gc/Energy/Potential/Metric/RiemannianDanek.*: Slightly faster specialization of the
+        approximation in 2D added.
+
+2012-02-10 Ondrej Danek <ondrej.danek@gmail.com>
+    * Gc/Flow/Grid/DanekLabels.cpp: Bug fixed.
+
 2011-11-15 Ondrej Danek <ondrej.danek@gmail.com>
     * Gc/Energy/Neighbourhood.h: Added 98-neighbourhood to the Common() method. Exception
         is thrown when unexpected neighbourhood size is supplied.

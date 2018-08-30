@@ -1,5 +1,6 @@
-% gc_chan_vese_lab   Calculate label preserving Chan-Vese segmentation via 
-%                    graph cuts.
+% gc_chan_vese_lab   Calculate graph cut based Chan-Vese segmentation
+%                    integrated with object indication function.
+%                    
 %
 % SYNOPSIS:
 %  [seg energy iter fc1 fc2] = gc_chan_vese_lab(img, ilab, mu, lambda1,
@@ -14,10 +15,10 @@
 %  [seg2 energy iter c1 c2] = gc_chan_vese_lab(s2n, seg1, 1, 10, 10);
 %
 % PARAMETERS:
-%  ilab: Initial labeling of the image.
+%  ilab: Initial object indicators.
 %  See gc_chan_vese for the documentation of the remaining input parameters.
 %
-%  seg: Segmentation mask.
+%  seg: Final segmentation (object indicators).
 %  energy: Energy of the solution.
 %  iter: Number of iterations performed.
 %  fc1: Final background mean intensity.
@@ -57,8 +58,8 @@
 %  c1, c2     Initialized using gc_weighted_kmeans function
 %
 % DESCRIPTION:
-%  Computes a label preserving Chan-Vese segmentation of the input image 
-%  with given weights via graph-cut based optimization. TODO.
+%  Computes the Chan-Vese segmentation of the input image integrated with
+%  object indication function via graph-cut based optimization. TODO.
 %
 % NOTES:
 %  See gc_chan_vese.

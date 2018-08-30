@@ -26,6 +26,8 @@
 */
 
 #include "../../System/ArgumentException.h"
+#include "../../System/Collection/Pair.h"
+#include "../../System/Algo/Sort/Heap.h"
 #include "../Constant.h"
 #include "Voronoi.h"
 #include "ConvexHull.h"
@@ -170,6 +172,18 @@ namespace Gc
             /************************************************************************/
 
             template <class T>
+            struct OrientationPred
+            {                
+                bool operator()(const System::Collection::Pair<T,Size>& v1, 
+                    const System::Collection::Pair<T,Size>& v2) const
+                {
+                    return (v1.m_first < v2.m_first);
+                }
+            };
+
+            /************************************************************************/
+
+            template <class T>
             void HypersphereVoronoiDiagram (const System::Collection::Array<1,Vector<2,T> > &points, 
                 System::Collection::Array<1,T> &vd)
             {
@@ -180,40 +194,33 @@ namespace Gc
                 }
 
                 // Sort vectors according to their angular orientation
-                System::Collection::Array<1,T> ao(points.Elements());
-                System::Collection::Array<1,Size> ai(points.Elements());
+                System::Collection::Array<1,System::Collection::Pair<T,Size> > p(points.Elements());
                 
                 for (Size i = 0; i < points.Elements(); i++)
                 {
-                    // Calculate angular orientation of the vector
-                    ao[i] = acos(points[i][0] / points[i].Length());
-                    if (points[i][1] < 0)
-                    {
-                        ao[i] = 2 * T(Constant::Pi) - ao[i];
-                    }
-
-                    // Save vector index
-                    ai[i] = i;
+                    // Calculate the angular orientation of the vector and save its index
+                    p[i].m_first = Math::Algebra::AngularOrientation(points[i]);
+                    p[i].m_second = i;
                 }
 
                 // Sort angular orientations
-                System::Algo::Sort::HeapSimultaneous(ao.Begin(), ao.End(), ai.Begin());
+                System::Algo::Sort::Heap(p.Begin(), p.End(), OrientationPred<T>());
                 
                 // Calculate Voronoi partitioning (average of neighbouring angular deltas)
                 vd.Resize(points.Elements());
                 Size li = points.Elements() - 1;
 
                 // First point
-                vd[ai[0]] = T(Constant::Pi) + (ao[1] - ao[li]) / 2;
+                vd[p[0].m_second] = T(Constant::Pi) + (p[1].m_first - p[li].m_first) / 2;
 
                 // Middle points                
                 for (Size i = 1; i < li; i++)
                 {
-                    vd[ai[i]] = (ao[i + 1] - ao[i - 1]) / 2;
+                    vd[p[i].m_second] = (p[i+1].m_first - p[i-1].m_first) / 2;
                 }
 
                 // Last point
-                vd[ai[li]] = T(Constant::Pi) + (ao[0] - ao[li - 1]) / 2;
+                vd[p[li].m_second] = T(Constant::Pi) + (p[0].m_first - p[li-1].m_first) / 2;
             }
 
             /************************************************************************/

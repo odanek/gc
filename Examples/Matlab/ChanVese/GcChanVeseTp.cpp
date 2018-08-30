@@ -58,8 +58,7 @@ static void Segment(const mxArray *mx_in, const mxArray *mx_interface, const mxA
     }
 
     // Create neighbourhood object
-    Gc::Energy::Neighbourhood<N,Gc::Int32> nb;
-    Gc::Examples::Matlab::CreateNeighbourhood(str_nb, nb);
+    Gc::Energy::Neighbourhood<N,Gc::Int32> nb((Gc::Size)atoi(str_nb + 1), false);
 
     // Segment
     Gc::System::Collection::Array<N,bool> seg;

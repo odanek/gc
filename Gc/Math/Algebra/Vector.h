@@ -645,7 +645,7 @@ namespace Gc
 
             /** Cross product of two 3D vectors. */
             template <class T>
-            Vector<3,T> CrossProduct (const Vector<3,T> &v1, const Vector<3,T> &v2)
+            Vector<3,T> CrossProduct(const Vector<3,T> &v1, const Vector<3,T> &v2)
             {
                 Vector<3,T> nv;
 
@@ -658,7 +658,7 @@ namespace Gc
 
             /** Calculates the clockwise angle between two 2D vectors. */
             template <class T>
-            T ClockwiseAngle (const Vector<2,T> &v1, const Vector<2,T> &v2)
+            T ClockwiseAngle(const Vector<2,T> &v1, const Vector<2,T> &v2)
             {
                 T ang = v1.Angle(v2);
                 
@@ -669,6 +669,14 @@ namespace Gc
                 }
 
                 return ang;
+            }
+
+            /** Calculate the angular orientation of a vector. */
+            template <class T>
+            T AngularOrientation(const Vector<2,T> &v)
+            {
+                T angle = acos(v[0] / v.Length());
+                return (v[1] < 0) ? (2 * T(Constant::Pi) - angle) : angle;
             }
         }
     }

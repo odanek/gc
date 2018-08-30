@@ -97,6 +97,7 @@ set(GC_SOURCES
     Gc/System/Log.cpp    
     Gc/System/Collection/Tuple.h
     Gc/System/Collection/Array.h
+    Gc/System/Collection/Pair.h
     Gc/System/Collection/ArrayBuilder.h
     Gc/System/Collection/IArrayMask.h
     Gc/System/Collection/BoolArrayMask.h    

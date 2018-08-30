@@ -338,14 +338,14 @@ namespace Gc
                         {
                             if (head->m_tag >= 8) // Free node
                             {
-                                head->m_parent_arc = Sister(i);
-                                head->m_tag = n->m_tag;
-                                head->m_label = n->m_label;
-
-                                if ((n->m_tag & 1) != (head->m_tag & 1))
+                                if (n->m_label != head->m_label)
                                 {
                                     head->m_dist = n->m_dist - 1;
                                 }
+
+                                head->m_parent_arc = Sister(i);
+                                head->m_tag = n->m_tag;
+                                head->m_label = n->m_label;
 
                                 EnqueueNode(head);
                             }
